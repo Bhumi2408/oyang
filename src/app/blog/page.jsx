@@ -1,9 +1,23 @@
-import React from 'react'
+import BlogHero from "@/components/blog/BlogHero";
+import BlogGrid from "@/components/blog/BlogGrid";
 
-const page = () => {
+export const metadata = {
+  title: "Blog | Ounuo Machinery — Packaging & Printing Machine Insights",
+  description:
+    "Buying guides, industry trends and engineering insights on paper bag, nonwoven, pouch and printing machinery from Zhejiang Ounuo Machinery.",
+  openGraph: {
+    title: "Blog | Ounuo Machinery",
+    description:
+      "Buying guides, industry trends and engineering insights on packaging machinery.",
+    type: "website",
+  },
+};
+
+export default function BlogPage() {
   return (
-    <div>Blog</div>
-  )
+    <>
+      <BlogHero />
+      <BlogGrid />
+    </>
+  );
 }
-
-export default page

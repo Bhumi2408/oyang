@@ -6,10 +6,7 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowCircleLeft,
-  faArrowLeft,
   faArrowRight,
-  faArrows,
 } from "@fortawesome/free-solid-svg-icons";
 
 const navLinks = [
@@ -26,7 +23,7 @@ const Header = () => {
   const pathname = usePathname();
   return (
     <>
-      <div className="flex items-center justify-between px-20 py-5 bg-white">
+      <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-20 py-5 bg-white shadow-sm">
         {/* Logo */}
         <div>
           <Link href="/" className="flex gap-1 items-center">
@@ -75,6 +72,8 @@ const Header = () => {
           </Link>
         </div>
       </div>
+      {/* Spacer to prevent content from hiding behind the fixed header */}
+      <div className="h-[76px]" />
     </>
   );
 };
