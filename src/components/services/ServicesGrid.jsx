@@ -33,25 +33,25 @@ const services = [
     number: "04",
     icon: ShieldCheck,
     title: "1-Year Warranty",
-    desc: "Every machine is covered for one year from the date installation is completed.",
+    desc: "Every machine is covered for one year from the date installation sign-off is completed.",
   },
   {
     number: "05",
     icon: Boxes,
     title: "Spare Parts Supply",
-    desc: "A dedicated spare-parts service department keeps your production line running.",
+    desc: "An intelligent 3D warehouse and free spare parts list keep your production line running.",
   },
   {
     number: "06",
     icon: Headphones,
     title: "One-to-One After-Sales Support",
-    desc: "Our customer service and inline service teams — 50+ staff — provide dedicated, individual attention to every issue.",
+    desc: "80+ bilingual after-sales engineers, with overseas offices in India and Russia, provide dedicated attention to every issue.",
   },
   {
     number: "07",
     icon: Plane,
     title: "Worldwide Shipping",
-    desc: "Export logistics serving customers across USA, EU, MENA, Africa, LATAM and Southeast Asia.",
+    desc: "Export logistics serving customers across North America, Latin America, Europe, Middle East, Africa, South Asia, Southeast Asia and Russia & CIS.",
   },
   {
     number: "08",
@@ -63,22 +63,22 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section className="py-24 px-10 lg:px-24 bg-white">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <section className="py-16 sm:py-24 px-6 sm:px-10 lg:px-24 bg-white">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         {services.map((service, index) => {
           const Icon = service.icon;
           return (
             <div
               key={index}
-              className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:border-primary hover:shadow-[0px_0px_25px] hover:shadow-primary/20 hover:bg-white hover:-translate-y-1"
+              className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-6 transition-all duration-300 hover:border-primary hover:shadow-[0px_0px_25px] hover:shadow-primary/20 hover:bg-white hover:-translate-y-1"
             >
               <p className="text-sm font-bold text-slate-400">{service.number}</p>
 
-              <div className="mt-4 w-12 h-12 rounded-xl bg-linear-to-br from-primary to-secondary flex items-center justify-center">
-                <Icon className="w-6 h-6 text-white" />
+              <div className="mt-4 w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-linear-to-br from-primary to-secondary flex items-center justify-center">
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
 
-              <h3 className="mt-4 text-lg font-extrabold text-[#0f172a]">
+              <h3 className="mt-4 text-base sm:text-lg font-extrabold text-[#0f172a]">
                 {service.title}
               </h3>
 

@@ -2,12 +2,12 @@ import { CheckCircle2, TrendingUp } from "lucide-react";
 
 const advantages = [
   {
-    title: "70+ R&D Technicians",
-    desc: "A dedicated in-house R&D team continuously develops energy-efficient, high-precision machinery.",
+    title: "200+ Engineers, 30+ Years Avg. Experience",
+    desc: "A $100M+ R&D program backed by an in-house engineering team continuously developing energy-efficient, high-precision machinery.",
   },
   {
     title: "280+ Patents Granted",
-    desc: "Including 80+ invention patents — a portfolio built on nearly two decades of engineering innovation.",
+    desc: "Including 80+ invention patents — a portfolio built on two decades of engineering innovation.",
   },
   {
     title: "Complete In-House Manufacturing",
@@ -17,25 +17,25 @@ const advantages = [
 
 const comparison = [
   ["Patents Granted", "280+ (incl. 80+ invention)", "Usually few or none"],
-  ["R&D Technicians", "70+ dedicated staff", "Often outsourced"],
+  ["R&D Investment", "$100M+, 200+ engineers", "Often outsourced"],
   ["Core Component Production", "Complete in-house (CNC)", "Typically outsourced"],
-  ["Certifications", "High-Tech Enterprise, CE, IAF, CNAS", "Usually one or two"],
-  ["Global Partner Companies", "4,500+", "Limited network"],
+  ["Certifications", "ISO9001, CE, IAF, CNAS, High-Tech Enterprise", "Usually one or two"],
+  ["Regional Support Offices", "8 dedicated regions worldwide", "Limited network"],
   ["Brand Structure", "OUNUO / OYANG / ALLWELL, unified team", "Single regional brand"],
 ];
 
 export default function Difference() {
   return (
-    <section className="py-24 px-24">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="py-16 sm:py-24 px-6 sm:px-10 lg:px-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         {/* Left */}
-        <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#fef2e8] px-5 py-2">
+        <div className="min-w-0">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#fef2e8] px-4 sm:px-5 py-2">
             <TrendingUp className="w-4 h-4 text-primary" />
             <span className="font-semibold text-primary text-sm">The Ounuo Difference</span>
           </div>
 
-          <h2 className="mt-5 text-5xl font-extrabold">
+          <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
             Why Manufacturers
             <br />
             Switch to{" "}
@@ -44,26 +44,27 @@ export default function Difference() {
             </span>
           </h2>
 
-          <p className="mt-5 text-lg text-slate-600">
+          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-600 leading-7">
             We don't just sell machines — we deliver a complete production
             advantage, backed by nearly two decades of in-house engineering.
             See how Ounuo compares to typical industry alternatives.
           </p>
 
-          <div className="space-y-4 mt-7">
+          <div className="space-y-4 mt-6 sm:mt-7">
             {advantages.map((item, index) => (
               <div
                 key={index}
                 className="flex gap-4 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-2xl bg-linear-to-r from-primary to-secondary flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-6 h-6 text-white" />
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-linear-to-r from-primary to-secondary flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
 
-                <div>
-                  <h3 className="font-semibold text-slate-900">{item.title}</h3>
-
-                  <p className="mt-1 text-char text-sm">{item.desc}</p>
+                <div className="min-w-0">
+                  <h3 className="font-semibold text-slate-900 text-sm sm:text-base">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-slate-500 text-sm">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -71,28 +72,28 @@ export default function Difference() {
         </div>
 
         {/* Right Table */}
-        <div className="rounded-[36px] overflow-hidden bg-linear-to-br from-[#041b33] via-[#07253f] to-[#0b3f46] p-10 shadow-[0_20px_80px_rgba(0,0,0,0.25)]">
-          <table className="w-full text-left">
-            <thead>
-              <tr className="border-b border-white/10">
-                <th className="pb-4 text-white text-sm">Feature</th>
-                <th className="pb-4 text-secondary text-sm">Ounuo</th>
-                <th className="pb-4 text-slate-400 text-sm">Others</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {comparison.map((row, index) => (
-                <tr key={index} className="border-b border-white/10 last:border-0">
-                  <td className="py-4 text-sm text-white font-semibold">{row[0]}</td>
-
-                  <td className="py-4 text-sm text-[#ffb84d] font-bold">{row[1]}</td>
-
-                  <td className="py-4 text-sm text-slate-400">{row[2]}</td>
+        <div className="rounded-[24px] sm:rounded-[36px] overflow-hidden bg-linear-to-br from-[#041b33] via-[#07253f] to-[#0b3f46] p-5 sm:p-8 lg:p-10 shadow-[0_20px_80px_rgba(0,0,0,0.25)] min-w-0">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left min-w-[480px]">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="pb-4 text-white text-sm">Feature</th>
+                  <th className="pb-4 text-secondary text-sm">Ounuo</th>
+                  <th className="pb-4 text-slate-400 text-sm">Others</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {comparison.map((row, index) => (
+                  <tr key={index} className="border-b border-white/10 last:border-0">
+                    <td className="py-4 text-sm text-white font-semibold pr-3">{row[0]}</td>
+                    <td className="py-4 text-sm text-[#ffb84d] font-bold pr-3">{row[1]}</td>
+                    <td className="py-4 text-sm text-slate-400">{row[2]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>

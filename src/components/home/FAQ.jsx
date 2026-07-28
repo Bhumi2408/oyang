@@ -6,7 +6,7 @@ const faqs = [
   {
     question: "Are you a manufacturer or a trading company?",
     answer:
-      "We have been a professional machinery manufacturer in the packaging and printing industry for over 17 years, operating from a facility spanning 130,000 m² with more than 400 employees.",
+      "We have been a professional machinery manufacturer in the packaging and printing industry for over 20 years, operating from a facility spanning 130,000 m² with more than 700 employees.",
   },
   {
     question: "Where is your factory located? May I visit?",
@@ -26,12 +26,12 @@ const faqs = [
   {
     question: "What happens after the one-year warranty period ends?",
     answer:
-      "We can continue to provide service after the warranty period, with a technician fee of $100–150 USD per day.",
+      "We continue to provide paid technical service and support after the warranty period ends — our team will share the exact service terms when you place your order.",
   },
   {
     question: "What are your advantages compared to other suppliers?",
     answer:
-      "Strong technical capability across 9 successful packaging and printing projects, $200M invested in Japanese MAZAK precision equipment, custom design and production, responsive after-sales support, and continuous technological innovation.",
+      "280+ patents (including 80+ invention patents), $30M invested in Japanese Mazak & Okuma precision CNC equipment, complete in-house component production, custom design capability, and responsive after-sales support across 8 global regions.",
   },
 ];
 
@@ -39,23 +39,23 @@ export default function FAQ() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-24 px-24 bg-linear-to-b from-white to-[#f8fafc]">
-      <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-14">
+    <section className="py-16 sm:py-24 px-6 sm:px-10 lg:px-24 bg-linear-to-b from-white to-[#f8fafc]">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-8 lg:gap-14">
         {/* Left */}
-        <div>
+        <div className="min-w-0">
           <div className="inline-flex items-center gap-2 rounded-full bg-[#eef6f7] px-4 py-2">
             <HelpCircle className="w-4 h-4 text-secondary" />
             <span className="font-semibold text-secondary text-sm">FAQs</span>
           </div>
 
-          <h2 className="mt-5 text-5xl font-extrabold">
+          <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold">
             Got{" "}
             <span className="bg-linear-to-r from-primary via-secondary/80 to-secondary bg-clip-text text-transparent">
               Questions?
             </span>
           </h2>
 
-          <p className="mt-4 text-lg text-slate-600">
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
             Quick answers to the most common questions buyers ask before placing an order.
           </p>
 
@@ -66,23 +66,25 @@ export default function FAQ() {
         </div>
 
         {/* Right */}
-        <div className="space-y-4">
+        <div className="space-y-4 min-w-0">
           {faqs.map((faq, index) => (
             <div key={index} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
               <button
                 onClick={() => setActive(active === index ? null : index)}
-                className="flex w-full items-center justify-between px-8 py-5 text-left"
+                className="flex w-full items-center justify-between gap-4 px-5 sm:px-8 py-4 sm:py-5 text-left"
               >
-                <span className="text-lg font-bold text-[#0f172a]">{faq.question}</span>
+                <span className="text-base sm:text-lg font-bold text-[#0f172a]">
+                  {faq.question}
+                </span>
 
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-r from-primary to-secondary/80 text-white shrink-0">
-                  {active === index ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-linear-to-r from-primary to-secondary/80 text-white shrink-0">
+                  {active === index ? <Minus className="w-4 h-4 sm:w-5 sm:h-5" /> : <Plus className="w-4 h-4 sm:w-5 sm:h-5" />}
                 </div>
               </button>
 
               <div
                 className={`transition-all duration-300 ${
-                  active === index ? "max-h-36 pb-7 px-8" : "max-h-0 overflow-hidden"
+                  active === index ? "max-h-48 pb-6 sm:pb-7 px-5 sm:px-8" : "max-h-0 overflow-hidden"
                 }`}
               >
                 <p className="text-sm text-slate-600">{faq.answer}</p>

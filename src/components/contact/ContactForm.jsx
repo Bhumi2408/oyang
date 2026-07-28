@@ -62,8 +62,8 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid md:grid-cols-2 gap-5">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+      <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
         <div>
           <label className="font-semibold text-sm text-gray-900">Full Name</label>
           <input
@@ -83,7 +83,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-5">
+      <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
         <div>
           <label className="font-semibold text-sm text-gray-900">Email</label>
           <input
@@ -110,10 +110,19 @@ export default function ContactForm() {
           name="interested_in"
           className="mt-1 w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary bg-white"
         >
-          <option value="">Select a machine type</option>
-          <option value="injection-molding">Injection Molding Machine</option>
-          <option value="blow-molding">Blow Molding Machine</option>
-          <option value="extrusion">Extrusion Line</option>
+          <option value="">Select a category</option>
+          <option value="roll-fed-paper-bag">Roll Fed Paper Bag Making Solutions</option>
+          <option value="sheet-fed-box-bag">Sheet Fed Box Bag Making Solutions</option>
+          <option value="nonwoven-bag">Nonwoven Bag Making Solutions</option>
+          <option value="flexible-pouch">Flexible Pouch Making Solutions</option>
+          <option value="paper-forming">Paper Forming Machine</option>
+          <option value="printing-machinery">Printing Machinery (Rotogravure / Flexo / Screen)</option>
+          <option value="post-press">Post-press & Converting</option>
+          <option value="auxiliary-equipment">Auxiliary Equipment</option>
+          <option value="spare-parts">Spare Parts & Consumables</option>
+          <option value="raw-material">Raw Material</option>
+          <option value="turnkey">Full-chain / Turnkey Solutions</option>
+          <option value="after-sales">After-sales Service</option>
           <option value="other">Other</option>
         </select>
       </div>
@@ -133,7 +142,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-lg flex items-center gap-2 transition disabled:opacity-60"
+        className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition disabled:opacity-60"
       >
         {loading ? "Sending..." : "Send Inquiry"} →
       </button>
