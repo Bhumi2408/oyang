@@ -124,14 +124,14 @@ const Header = () => {
                 times: [0, 0.2, 0.4, 0.6, 1],
               }}
             >
-              <Image src="/favicon.png" alt="fav" width={36} height={36} className="lg:w-10 lg:h-10" />
+              <Image src="/favicon.png" alt="fav" width={36} height={36} className="lg:w-9 lg:h-9" />
             </motion.div>
             <Image
               src="/images/logos.png"
               alt="Logo"
               width={130}
               height={44}
-              className="lg:w-[150px] lg:h-[50px]"
+              className="object-contain lg:w-[150px] lg:h-[50px]"
             />
           </Link>
 

@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
           <video
             src="/oyang-video.mp4"
-            poster="/images/hero.jpg"
+            poster="/oyang-company.jpg"
             width={850}
             height={600}
             autoPlay
