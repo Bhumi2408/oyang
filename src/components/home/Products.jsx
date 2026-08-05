@@ -1,42 +1,47 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Cog, Leaf, Package, Printer, ShoppingBag, Sparkles } from "lucide-react";
+import { ArrowRight, Cog, Printer, ScissorsLineDashed, Scroll, ShoppingBag, Sparkles, Wrench } from "lucide-react";
 
 const products = [
   {
     icon: ShoppingBag,
     color: "#ff7a18",
-    image: "/images/hero.jpg",
-    title: "Paper Bag Machines",
-    desc: "Roll-fed & sheet-fed paper bag lines with square, sharp and V-bottom options.",
-  },
-  {
-    icon: Package,
-    color: "#135CA1",
-    image: "/images/product2.jpg",
-    title: "Nonwoven Bag Machines",
-    desc: "D-cut, W-cut and box bag making machines for supermarket, eco bag and takeaway use.",
-  },
-  {
-    icon: Leaf,
-    color: "#809783",
-    image: "/images/product3.jpg",
-    title: "Paper Forming Machines",
-    desc: "Eco-friendly paper cutlery, plates and forming machines for a plastic-free future.",
-  },
-  {
-    icon: Package,
-    color: "#9D5FC8",
-    image: "/images/product4.jpg",
-    title: "Flexible Pouch Machines",
-    desc: "For food, beverage, pharmaceutical, pet food and daily care packaging pouches.",
+    image: "/images/products/forming-machines.png",
+    title: "Forming Machine",
+    desc: "Nonwoven bag, roll fed & sheet fed paper bag, flexible pouch and paper forming machines.",
+    href: "/products/forming-machine",
   },
   {
     icon: Printer,
+    color: "#135CA1",
+    image: "/images/products/printing-machine.png",
+    title: "Printing",
+    desc: "Rotogravure, flexographic and screen printing machines for film, paper and nonwoven.",
+    href: "/products/printing",
+  },
+  {
+    icon: ScissorsLineDashed,
+    color: "#809783",
+    image: "/images/products/post-press.png",
+    title: "Post-Press & Converting",
+    desc: "Flatbed die cutting, roll-to-roll lamination and flute laminating machines.",
+    href: "/products/post-press-converting",
+  },
+  {
+    icon: Wrench,
+    color: "#9D5FC8",
+    image: "/images/products/auxiliary.png",
+    title: "Auxiliary Equipment",
+    desc: "Slitters, handle pasting, sealing, punching and coating auxiliary machines for every line.",
+    href: "/products/auxiliary-equipment",
+  },
+  {
+    icon: Scroll,
     color: "#BC0019",
-    image: "/images/product5.jpg",
-    title: "Printing Machines",
-    desc: "Rotogravure, flexographic and screen printing solutions for film, paper and nonwoven.",
+    image: "/solutions/materials/non-woven-fabric-rolls.png",
+    title: "Raw Material",
+    desc: "Kraft & coated paper rolls, non-woven fabric rolls and flexible film rolls.",
+    href: "/products/raw-material",
   },
 ];
 
@@ -54,8 +59,8 @@ export default function Products() {
         </span>
       </h4>
       <p className="text-slate-600 mt-4 sm:mt-5 leading-6 sm:leading-7 text-base sm:text-lg max-w-2xl">
-        From paper bags to flexible pouches and full-color printing — discover our complete
-        portfolio of industrial machinery.
+        From bag forming and printing to post-press converting, auxiliary equipment
+        and raw material — explore our complete packaging machinery range.
       </p>
 
       <div className="max-w-7xl w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mt-8 sm:mt-10">
@@ -73,7 +78,7 @@ export default function Products() {
                   alt={p.title}
                   width={1920}
                   height={1080}
-                  className="w-full h-full object-cover object-bottom transition-all duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover object-center transition-all duration-300 group-hover:scale-105"
                 />
                 <div className="absolute z-10 top-4 sm:top-5 left-4 sm:left-5">
                   <Icon
@@ -92,7 +97,7 @@ export default function Products() {
                 <p className="text-base sm:text-lg font-extrabold">{p.title}</p>
                 <p className="mt-2 sm:mt-3 text-slate-600 text-sm">{p.desc}</p>
                 <Link
-                  href="/products"
+                  href={p.href}
                   className="group/link mt-4 sm:mt-5 font-bold text-sm inline-flex gap-2 items-center"
                   style={{ color: p.color }}
                 >
@@ -116,7 +121,7 @@ export default function Products() {
             </p>
           </div>
           <Link
-            href="/products"
+            href="/contact"
             className="group/link mt-5 text-white font-bold flex gap-2 items-center"
           >
             Talk to an Engineer

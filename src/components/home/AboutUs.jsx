@@ -8,7 +8,7 @@ export default function AboutUs() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-10">
         <div className="w-full min-w-0">
           <Image
-            src="/images/oyangfactory.webp"
+            src="/oyang-company.jpg"
             alt="oyang factory"
             width={650}
             height={400}

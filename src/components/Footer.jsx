@@ -16,17 +16,25 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
+const machineLinks = [
+  { name: "Forming Machine", href: "/products/forming-machine" },
+  { name: "Printing", href: "/products/printing" },
+  { name: "Post-Press & Converting", href: "/products/post-press-converting" },
+  { name: "Auxiliary Equipment", href: "/products/auxiliary-equipment" },
+  { name: "Raw Material", href: "/products/raw-material" },
+];
+
 const Footer = () => {
   return (
     <div>
-      <footer className="relative overflow-hidden bg-gradient-to-br from-[#0B132B] via-[#102A43] to-[#0F4C5C] text-white">
+      <footer className="relative overflow-hidden bg-linear-to-br from-[#0B132B] via-[#102A43] to-[#0F4C5C] text-white">
         {/* Glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-[#ED5114]/20 blur-[120px]" />
 
-        <div className="relative z-10 px-20 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-14">
+        <div className="relative z-10 px-6 sm:px-10 lg:px-20 py-14 lg:py-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 lg:gap-14">
             {/* Logo & About */}
-            <div>
+            <div className="sm:col-span-2 lg:col-span-1">
               <Link href="/" className="flex items-center gap-1">
                 <motion.div
                   animate={{ scale: [1, 1.1, 1, 1.1, 1] }}
@@ -44,7 +52,7 @@ const Footer = () => {
                   />
                 </motion.div>
 
-                <div className=" rounded-xl">
+                <div className="rounded-xl">
                   <Image
                     src="/images/logopng.png"
                     alt="Oyang India"
@@ -55,29 +63,33 @@ const Footer = () => {
               </Link>
 
               <p className="mt-7 text-slate-300 leading-7">
-                Oyang India delivers world-class paper bag, nonwoven bag,
-                cutlery and printing machinery for sustainable manufacturing and
-                packaging solutions.
+                Oyang India brings Zhejiang Ounuo Machinery's paper bag, nonwoven
+                bag, paper forming and printing machinery — engineered in a
+                130,000 m² facility in Wenzhou, China — to manufacturers across
+                India.
               </p>
 
               {/* Social */}
               <div className="flex gap-4 mt-8">
                 <Link
-                  href="#"
+                  href="https://www.facebook.com/oyangpackaging"
+                  target="_blank"
                   className="w-11 h-11 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300"
                 >
                   <FaFacebook size={18} />
                 </Link>
 
                 <Link
-                  href="#"
+                  href="https://www.instagram.com/oyangpackaging"
+                  target="_blank"
                   className="w-11 h-11 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300"
                 >
                   <FaInstagram size={18} />
                 </Link>
 
                 <Link
-                  href="#"
+                  href="https://www.youtube.com/@oyang.packaging"
+                  target="_blank"
                   className="w-11 h-11 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300"
                 >
                   <FaYoutube size={18} />
@@ -87,7 +99,7 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-white">
+              <h3 className="text-xl lg:text-2xl font-bold mb-6 text-white">
                 Quick Links
               </h3>
 
@@ -110,55 +122,45 @@ const Footer = () => {
 
             {/* Machines */}
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-white">
+              <h3 className="text-xl lg:text-2xl font-bold mb-6 text-white">
                 Our Machines
               </h3>
 
               <div className="space-y-3 text-slate-300">
-                <Link href="#" className="block hover:text-white">
-                  Paper Bag Machines
-                </Link>
-
-                <Link href="#" className="block hover:text-white">
-                  Nonwoven Bag Machines
-                </Link>
-
-                <Link href="#" className="block hover:text-white">
-                  Paper Cutlery Machines
-                </Link>
-
-                <Link href="#" className="block hover:text-white">
-                  Pouch Making Machines
-                </Link>
-
-                <Link href="#" className="block hover:text-white">
-                  Printing Machines
-                </Link>
+                {machineLinks.map((link) => (
+                  <Link key={link.name} href={link.href} className="block hover:text-white transition-colors duration-300">
+                    {link.name}
+                  </Link>
+                ))}
               </div>
             </div>
 
             {/* Contact */}
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-white">Contact</h3>
+              <h3 className="text-xl lg:text-2xl font-bold mb-6 text-white">Contact</h3>
 
               <div className="space-y-5">
                 <div className="flex gap-3">
-                  <MapPin className="text-[#FFB347] mt-1" size={18} />
-                  <span className="text-slate-300">Delhi, India</span>
+                  <MapPin className="text-[#FFB347] mt-1 shrink-0" size={18} />
+                  <span className="text-slate-300">New Delhi, India</span>
                 </div>
 
                 <div className="flex gap-3">
-                  <Phone className="text-[#FFB347] mt-1" size={18} />
-                  <span className="text-slate-300">+91 XXXXX XXXXX</span>
+                  <Phone className="text-[#FFB347] mt-1 shrink-0" size={18} />
+                  <a href="tel:+918047547003" className="text-slate-300 hover:text-white transition-colors duration-300">
+                    +91 80475 47003
+                  </a>
                 </div>
 
                 <div className="flex gap-3">
-                  <Mail className="text-[#FFB347] mt-1" size={18} />
-                  <span className="text-slate-300">info@oyangindia.com</span>
+                  <Mail className="text-[#FFB347] mt-1 shrink-0" size={18} />
+                  <a href="mailto:info@oyangindia.com" className="text-slate-300 hover:text-white transition-colors duration-300 break-all">
+                    info@oyangindia.com
+                  </a>
                 </div>
 
                 <div className="flex gap-3">
-                  <Globe className="text-[#FFB347] mt-1" size={18} />
+                  <Globe className="text-[#FFB347] mt-1 shrink-0" size={18} />
                   <span className="text-slate-300">Serving PAN India</span>
                 </div>
               </div>
@@ -166,15 +168,14 @@ const Footer = () => {
           </div>
 
           {/* Bottom */}
-          <div className="border-t border-white/10 mt-14 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400">
-              © 2026 Oyang India. All Rights Reserved | Powered By <Link href="https://www.cybertricksmedia.com/" target="_blank">Bharat Bizmart</Link>
+          <div className="border-t border-white/10 mt-12 lg:mt-14 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <p className="text-slate-400 text-sm">
+              © 2026 Oyang India. All Rights Reserved | Powered By{" "}
+              <Link href="https://www.cybertricksmedia.com/" target="_blank" className="hover:text-white transition-colors duration-300">
+                Cybertricksmedia Pvt Ltd
+              </Link>
             </p>
 
-            <div className="flex gap-6 text-slate-400">
-              <Link href="#">Privacy Policy</Link>
-              <Link href="#">Terms & Conditions</Link>
-            </div>
           </div>
         </div>
       </footer>
