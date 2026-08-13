@@ -23,65 +23,65 @@ const productColumns = [
   {
     heading: "Forming Machine",
     icon: ShoppingBag,
-    href: "/products#forming-machine",
+    href: "/products/forming-machine",
     links: [
-      { label: "Nonwoven Bag Making Machine", href: "/products#nonwoven-bag" },
-      { label: "Roll Fed Paper Bag Machine", href: "/products#roll-fed-paper-bag" },
-      { label: "Sheet Fed Box Bag Machine", href: "/products#sheet-fed-box-bag" },
-      { label: "Flexible Pouch Machine", href: "/products#flexible-pouch" },
-      { label: "Paper Forming Machine", href: "/products#paper-forming" },
+      { label: "Nonwoven Bag Making Machine", href: "/products/forming-machine/nonwoven-bag-making-machine" },
+      { label: "Roll Fed Paper Bag Machine", href: "/products/forming-machine/roll-fed-paper-bag-making-machine" },
+      { label: "Sheet Fed Box Bag Machine", href: "/products/forming-machine/sheet-fed-box-bag-making-machine" },
+      { label: "Flexible Pouch Machine", href: "/products/forming-machine/flexible-pouch-making-machine" },
+      { label: "Paper Forming Machine", href: "/products/forming-machine/paper-forming-machine" },
     ],
   },
   {
     heading: "Printing",
     icon: Printer,
-    href: "/products#printing",
+    href: "/products/printing",
     links: [
-      { label: "Rotogravure Printing", href: "/products#rotogravure-printing" },
-      { label: "Flexographic Printing", href: "/products#flexographic-printing" },
-      { label: "Screen Printing", href: "/products#screen-printing" },
+      { label: "Rotogravure Printing", href: "/products/printing/rotogravure-printing-machine" },
+      { label: "Flexographic Printing", href: "/products/printing/flexographic-printing-machine" },
+      { label: "Screen Printing", href: "/products/printing/screen-printing-machine" },
     ],
   },
   {
     heading: "Post-Press",
     icon: ScissorsLineDashed,
-    href: "/products#post-press",
+    href: "/products/post-press-converting",
     links: [
-      { label: "Flatbed Die Cutting", href: "/products#flatbed-die-cutting" },
-      { label: "Roll to Roll Lamination", href: "/products#roll-to-roll-lamination" },
-      { label: "Flute Laminating Machine", href: "/products#flute-laminating" },
+      { label: "Flatbed Die Cutting", href: "/products/post-press-converting/flatbed-die-cutting-machine" },
+      { label: "Roll to Roll Lamination", href: "/products/post-press-converting/roll-to-roll-lamination" },
+      { label: "Flute Laminating Machine", href: "/products/post-press-converting/flute-laminating-machine" },
     ],
   },
   {
     heading: "Auxiliary Equipment",
     icon: Wrench,
-    href: "/products#auxiliary-equipment",
+    href: "/products/auxiliary-equipment",
     links: [
-      { label: "Paper Bag Auxiliary", href: "/products#paper-bag-auxiliary" },
-      { label: "Nonwoven Bag Auxiliary", href: "/products#nonwoven-bag-auxiliary" },
-      { label: "Flexible Pouch Auxiliary", href: "/products#flexible-pouch-auxiliary" },
-      { label: "Paper Forming Auxiliary", href: "/products#paper-forming-auxiliary" },
+      { label: "Paper Bag Auxiliary", href: "/products/auxiliary-equipment/paper-bag-auxiliary-equipment" },
+      { label: "Nonwoven Bag Auxiliary", href: "/products/auxiliary-equipment/nonwoven-bag-auxiliary-equipment" },
+      { label: "Flexible Pouch Auxiliary", href: "/products/auxiliary-equipment/flexible-pouch-auxiliary" },
+      { label: "Paper Forming Auxiliary", href: "/products/auxiliary-equipment/paper-forming-auxiliary" },
     ],
   },
   {
     heading: "Raw Material",
     icon: Scroll,
-    href: "/products#raw-material",
+    href: "/products/raw-material",
     links: [
-      { label: "Paper Rolls", href: "/products#paper-rolls" },
-      { label: "Non-woven Fabric Rolls", href: "/products#nonwoven-fabric-rolls" },
-      { label: "Flexible Film Rolls", href: "/products#flexible-film-rolls" },
+      { label: "Paper Rolls", href: "/products/raw-material/paper-rolls" },
+      { label: "Non-woven Fabric Rolls", href: "/products/raw-material/non-woven-fabric-rolls" },
+      { label: "Flexible Film Rolls", href: "/products/raw-material/flexible-film-rolls" },
     ],
   },
 ];
 
-// Solutions is a single page — just 5 flat category links, no nested sub-items.
+// Solutions is a single page — just 5 flat category links, no separate sub-pages built.
 const solutionLinks = [
-  { label: "By Application", icon: Boxes, href: "/solutions/applications" },
-  { label: "By Production Line", icon: Layers, href: "/solutions/production-lines" },
-  { label: "By Bag Type", icon: ShoppingBag, href: "/solutions/bag-types" },
-  { label: "By Machine Function", icon: Wrench, href: "/solutions/machine-functions" },
-  { label: "By Material", icon: Droplets, href: "/solutions/materials" },
+  { label: "By Application", icon: Boxes, href: "/solutions" },
+  { label: "By Production Line", icon: Layers, href: "/solutions" },
+  { label: "By Bag Type", icon: ShoppingBag, href: "/solutions" },
+  { label: "By Machine Function", icon: Wrench, href: "/solutions" },
+  { label: "By Material", icon: Droplets, href: "/solutions" },
 ];
 
 const navLinks = [
