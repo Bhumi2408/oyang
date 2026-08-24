@@ -77,11 +77,11 @@ const productColumns = [
 
 // Solutions is a single page — just 5 flat category links, no separate sub-pages built.
 const solutionLinks = [
-  { label: "By Application", icon: Boxes, href: "/solutions" },
-  { label: "By Production Line", icon: Layers, href: "/solutions" },
-  { label: "By Bag Type", icon: ShoppingBag, href: "/solutions" },
-  { label: "By Machine Function", icon: Wrench, href: "/solutions" },
-  { label: "By Material", icon: Droplets, href: "/solutions" },
+  { label: "By Application", icon: Boxes, href: "/solutions/applications" },
+  { label: "By Production Line", icon: Layers, href: "/solutions/production-lines" },
+  { label: "By Bag Type", icon: ShoppingBag, href: "/solutions/bag-types" },
+  { label: "By Machine Function", icon: Wrench, href: "/solutions/machine-functions" },
+  { label: "By Material", icon: Droplets, href: "/solutions/materials" },
 ];
 
 const navLinks = [
