@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ChevronRight, Send } from "lucide-react";
-import { categories, getModel } from "@/app/lib/products-data";
+import { categories, getModel ,getAllModelsForLine } from "@/app/lib/products-data";
 
 export function generateStaticParams() {
   return categories.flatMap((c) =>
     c.lines.flatMap((l) =>
-      (l.models || []).map((m) => ({
+      getAllModelsForLine(l).map((m) => ({
         category: c.slug,
         line: l.slug,
         model: m.slug,

@@ -1424,9 +1424,24 @@ export function getLine(categorySlug, lineSlug) {
   return { category, line };
 }
 
+// Helper: collects models whether they sit directly on `line.models`
+// or nested inside `line.series[].models` (like nonwoven-bag-making-machine).
+export function getAllModelsForLine(line) {
+  if (!line) return [];
+  if (Array.isArray(line.models) && line.models.length > 0) {
+    return line.models;
+  }
+  if (Array.isArray(line.series)) {
+    return line.series.flatMap((s) => s.models || []);
+  }
+  return [];
+}
+
 export function getModel(categorySlug, lineSlug, modelSlug) {
   const { category, line } = getLine(categorySlug, lineSlug);
   if (!line) return { category, line: null, model: null };
-  const model = line.models.find((m) => m.slug === modelSlug) || null;
+
+  const allModels = getAllModelsForLine(line);
+  const model = allModels.find((m) => m.slug === modelSlug) || null;
   return { category, line, model };
 }
