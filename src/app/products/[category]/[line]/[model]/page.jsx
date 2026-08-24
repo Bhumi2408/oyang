@@ -6,10 +6,15 @@ import { categories, getModel } from "@/app/lib/products-data";
 
 export function generateStaticParams() {
   return categories.flatMap((c) =>
-    c.lines.flatMap((l) => l.models.map((m) => ({ category: c.slug, line: l.slug, model: m.slug })))
+    c.lines.flatMap((l) =>
+      (l.models || []).map((m) => ({
+        category: c.slug,
+        line: l.slug,
+        model: m.slug,
+      }))
+    )
   );
 }
-
 export async function generateMetadata({ params }) {
   const { category: categorySlug, line: lineSlug, model: modelSlug } = await params;
   const { category, line, model } = getModel(categorySlug, lineSlug, modelSlug);
