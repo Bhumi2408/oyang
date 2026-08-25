@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { ArrowRight, Layers, Package, Search, ShoppingBag, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 const categories = [
   { key: "all", label: "All Bag Types", icon: Sparkles },
@@ -167,14 +168,14 @@ export default function SolutionsCatalog() {
                     ))}
                   </div>
 
-                  <button
+                  <Link href="/contact"
                     type="button"
                     className="group/btn mt-4 flex items-center gap-1.5 text-sm font-bold"
                     style={{ color: item.color }}
                   >
                     Get Solution
                     <ArrowRight className="w-4 h-4 transition-all duration-300 group-hover/btn:translate-x-1" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
