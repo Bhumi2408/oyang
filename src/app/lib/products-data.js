@@ -840,7 +840,7 @@ export const categories = [
             range: "80 – 2000 g/m²",
             items: ["White Cardboard · Grey-back White Board", "White-back White Board · Grey Board", "Coated Art Paper · Kraft Board", "Laminated & UV-coated Board"],
             series: ["SS Series", "SSR Series", "SF Series", "FSS Series"],
-            image: "/images/materials/kraft-Board.png",
+            image: "/images/materials/Kraft-Board.png",
           },
           {
             title: "Corrugated Board",
@@ -1104,7 +1104,7 @@ export const categories = [
             title: "Surface Paper (Face Sheet)",
             range: "≥140 g/m²",
             items: ["White Cardboard · Grey-back White Board", "White-back White Board · Grey Board", "G / F / E / B / C / A Single Flute Corrugated", "3-Layer, 5-Layer, 7-Layer Paperboard"],
-            image: "/images/materials/kraft-Board.png",
+            image: "/images/materials/Kraft-Board.png",
           },
           {
             title: "Bottom Sheet",
