@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { ArrowRight, ChevronRight, PlayCircle } from "lucide-react";
 import { categories, getLine } from "@/app/lib/products-data";
 import FaqAccordion from "@/components/product/FaqAccordion";
+import { Mail } from "lucide-react";
+import ProductGallery from "@/components/product/ProductGallery";
 
 export function generateStaticParams() {
   return categories.flatMap((c) =>
@@ -38,6 +40,10 @@ export default async function LinePage({ params }) {
   const hasSeries = Array.isArray(line.series) && line.series.length > 0;
   const hasModels =
     !hasSeries && Array.isArray(line.models) && line.models.length > 0;
+  const hasProductGrades =
+    Array.isArray(line.productGrades) && line.productGrades.length > 0;
+  const hasMaterialGrades =
+    Array.isArray(line.materialGrades) && line.materialGrades.length > 0;
 
   // Build a comparison table from flat models' `specs` if every model has specs
   const comparisonRows = hasModels
@@ -136,6 +142,120 @@ export default async function LinePage({ params }) {
           </div>
         )}
       </div>
+
+      {/* Product Overview Card (image gallery + quick specs + CTA) */}
+     {line.images && (
+        <section className="px-6 lg:px-24 -mt-8 relative z-10">
+          <div className="max-w-6xl mx-auto rounded-3xl bg-white shadow-xl overflow-hidden border border-slate-100">
+            <div className="grid grid-cols-1 lg:grid-cols-5">
+              {/* Image gallery — takes more visual weight */}
+              <div className="lg:col-span-2 bg-slate-50 p-6 lg:p-8">
+                <ProductGallery images={line.images} alt={line.name} />
+              </div>
+
+              {/* Quick info */}
+              <div className="lg:col-span-3 p-6 lg:p-10">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="inline-block w-2 h-2 rounded-full"
+                    style={{ background: category.color }}
+                  />
+                  <span
+                    className="text-xs font-bold uppercase tracking-wider"
+                    style={{ color: category.color }}
+                  >
+                    {category.name}
+                  </span>
+                </div>
+
+                <h2 className="mt-3 text-2xl lg:text-4xl font-extrabold text-[#0f172a] leading-tight">
+                  {line.name}
+                </h2>
+
+                <p className="mt-4 text-sm text-slate-600 leading-7">
+                  {line.longDesc}
+                </p>
+
+                {line.bagStyleTags && (
+                  <div className="flex flex-wrap gap-2 mt-5">
+                    {line.bagStyleTags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold"
+                        style={{
+                          background: `${category.color}0D`,
+                          color: category.color,
+                        }}
+                      >
+                        <span
+                          className="w-1.5 h-1.5 rounded-full shrink-0"
+                          style={{ background: category.color }}
+                        />
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {line.stats && (
+                  <div className="flex flex-wrap divide-x divide-slate-200 border-y border-slate-200 mt-6 py-4">
+                    {line.stats.map((stat, i) => (
+                      <div key={i} className="flex-1 min-w-[110px] px-4 first:pl-0">
+                        <p
+                          className="text-xl font-extrabold"
+                          style={{ color: category.color }}
+                        >
+                          {stat.value}
+                        </p>
+                        <p className="mt-0.5 text-[11px] font-semibold text-slate-500 leading-tight">
+                          {stat.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {line.bagTypesProduced && (
+                  <div className="mt-6">
+                    <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2.5">
+                      Compatible Bag Types
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {line.bagTypesProduced.map((bag, i) => (
+                        <span
+                          key={i}
+                          className="rounded-md border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700"
+                        >
+                          {bag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex flex-col sm:flex-row gap-3 mt-7">
+                  <Link
+                    href="/contact"
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-bold text-white text-sm transition-all duration-300 hover:opacity-90"
+                    style={{ background: category.color }}
+                  >
+                    <Mail className="w-4 h-4" />
+                    Contact Us
+                  </Link>
+                  <a
+                    href="https://api.whatsapp.com/send?phone=8615058933503"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-500 px-6 py-3.5 font-bold text-emerald-600 text-sm transition-all duration-300 hover:bg-emerald-50"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Bag types produced */}
       {line.bagTypesProduced && (
@@ -300,6 +420,211 @@ export default async function LinePage({ params }) {
           </section>
         ))}
 
+      {line.introText && (
+        <section className="py-10 px-6 lg:px-24 bg-amber-50/50 border-y border-amber-100">
+          <p className="max-w-4xl mx-auto text-slate-700 leading-7 text-center">
+            {line.introText}
+          </p>
+        </section>
+      )}
+
+      {line.bannerFeatures && (
+        <section className="py-10 px-6 lg:px-24 bg-white">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {line.bannerFeatures.map((f, i) => (
+              <div key={i} className="text-center">
+                <h4 className="font-extrabold text-[#0f172a]">{f.title}</h4>
+                <p className="mt-1 text-xs text-slate-500">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {hasMaterialGrades && (
+        <section className="py-16 lg:py-20 px-6 lg:px-24 bg-slate-50">
+          <h2 className="text-2xl lg:text-3xl font-extrabold text-[#0f172a] mb-10 text-center">
+            {line.materialGrades[0]?.name.split(" ")[0]} vs.{" "}
+            {line.materialGrades[1]?.name.split(" ")[0]} — Which Do You Need?
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {line.materialGrades.map((grade, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border-2 bg-white p-7"
+                style={{ borderColor: `${category.color}30` }}
+              >
+                <span
+                  className="text-xs font-bold uppercase tracking-wide"
+                  style={{ color: category.color }}
+                >
+                  {grade.tag}
+                </span>
+                <h3 className="mt-1 text-xl font-extrabold text-[#0f172a]">
+                  {grade.name}
+                </h3>
+                <p className="mt-3 text-sm text-slate-600 leading-6">
+                  {grade.desc}
+                </p>
+
+                <ul className="mt-4 space-y-1.5">
+                  {grade.checklist.map((c, ci) => (
+                    <li
+                      key={ci}
+                      className="flex items-start gap-2 text-sm text-slate-700"
+                    >
+                      <span style={{ color: category.color }}>✓</span> {c}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-5 rounded-xl bg-slate-50 p-4">
+                  <p className="text-xs font-bold text-slate-500 uppercase">
+                    Typical Applications
+                  </p>
+                  <p className="mt-1 text-sm text-slate-700">
+                    {grade.applications}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Technical spec comparison table */}
+          <div className="max-w-5xl mx-auto mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+            <table className="w-full text-left border-collapse min-w-[500px]">
+              <thead>
+                <tr className="bg-slate-100">
+                  <th className="px-5 py-3.5 text-sm font-bold text-[#0f172a] border-b border-slate-200">
+                    Parameter
+                  </th>
+                  {line.materialGrades.map((g, i) => (
+                    <th
+                      key={i}
+                      className="px-5 py-3.5 text-sm font-bold border-b border-slate-200"
+                      style={{ color: category.color }}
+                    >
+                      {g.name.split(" ")[0]} Kraft
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(line.materialGrades[0].specs).map((key, ri) => (
+                  <tr
+                    key={key}
+                    className={ri % 2 === 1 ? "bg-slate-50/60" : ""}
+                  >
+                    <td className="px-5 py-3.5 text-sm font-semibold text-[#0f172a] border-b border-slate-100 last:border-0">
+                      {key}
+                    </td>
+                    {line.materialGrades.map((g, gi) => (
+                      <td
+                        key={gi}
+                        className="px-5 py-3.5 text-sm text-slate-600 border-b border-slate-100 last:border-0"
+                      >
+                        {g.specs[key]}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {line.selectionGuide && (
+        <section className="py-16 px-6 lg:px-24 bg-white">
+          <h2 className="text-2xl font-extrabold text-[#0f172a] mb-8 text-center">
+            Paper Type × Machine × Application
+          </h2>
+          <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-slate-200">
+            <table className="w-full text-left border-collapse min-w-[700px]">
+              <thead>
+                <tr className="bg-slate-100">
+                  {line.selectionGuide.headers.map((h, i) => (
+                    <th
+                      key={i}
+                      className="px-5 py-3.5 text-xs font-bold text-slate-500 uppercase border-b border-slate-200"
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {line.selectionGuide.rows.map((row, ri) => (
+                  <tr key={ri} className={ri % 2 === 1 ? "bg-slate-50/60" : ""}>
+                    {row.map((cell, ci) => (
+                      <td
+                        key={ci}
+                        className="px-5 py-3.5 text-sm text-slate-700 border-b border-slate-100 last:border-0"
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {line.endProductGroups && (
+        <section className="py-16 px-6 lg:px-24 bg-slate-50">
+          <h2 className="text-2xl font-extrabold text-[#0f172a] mb-10 text-center">
+            Paper Bag Types Made from These Rolls
+          </h2>
+          <div className="max-w-6xl mx-auto space-y-8">
+            {line.endProductGroups.map((group, gi) => (
+              <div
+                key={gi}
+                className="rounded-2xl border border-slate-200 bg-white p-6"
+              >
+                <p
+                  className="text-xs font-bold uppercase tracking-wide mb-4"
+                  style={{ color: category.color }}
+                >
+                  {group.heading}
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                  {group.bags.map((bag, bi) => (
+                    <div
+                      key={bi}
+                      className="rounded-xl bg-slate-50 p-4 text-center"
+                    >
+                      <p className="text-sm font-bold text-[#0f172a]">
+                        {bag.name}
+                      </p>
+                      <p className="mt-1 text-xs text-slate-500">
+                        {bag.gsm} · {bag.use}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                {group.highlights && (
+                  <div className="mt-5 rounded-xl bg-amber-50 p-5">
+                    <p className="font-bold text-sm text-[#0f172a] mb-2">
+                      {group.highlights.title}
+                    </p>
+                    <ul className="space-y-1">
+                      {group.highlights.points.map((p, pi) => (
+                        <li key={pi} className="text-sm text-slate-700">
+                          ✓ {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Flat models grid (roll-fed-style) */}
       {hasModels && (
         <section className="py-12 lg:py-16 px-6 lg:px-24 bg-white">
@@ -348,7 +673,7 @@ export default async function LinePage({ params }) {
         </section>
       )}
 
-      {!hasSeries && !hasModels && (
+      {!hasSeries && !hasModels && !hasMaterialGrades && (
         <section className="py-16 text-center px-6">
           <p className="text-lg text-slate-500">
             Detailed model listings for this line are coming soon.
@@ -360,14 +685,61 @@ export default async function LinePage({ params }) {
               background: `linear-gradient(135deg, ${category.color}, ${category.color}CC)`,
             }}
           >
-            Request Machine Details <ArrowRight className="w-4 h-4" />
+            Request Machine Details
+            <ArrowRight className="w-4 h-4" />
           </Link>
+        </section>
+      )}
+
+      {/* Product Grades (raw material lines — no further detail page) */}
+      {hasProductGrades && (
+        <section className="py-16 lg:py-20 px-6 lg:px-24 bg-white">
+          <h2 className="text-2xl font-extrabold text-[#0f172a] mb-8">
+            Available Grades
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {line.productGrades.map((grade, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-7"
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-extrabold text-[#0f172a]">
+                    {grade.name}
+                  </h3>
+                  <span
+                    className="rounded-full px-3 py-1 text-xs font-bold text-white shrink-0"
+                    style={{ background: category.color }}
+                  >
+                    {grade.gsmRange}
+                  </span>
+                </div>
+                <p className="mt-3 text-sm text-slate-600 leading-6">
+                  {grade.desc}
+                </p>
+
+                <p className="mt-5 text-xs font-bold text-slate-500 uppercase tracking-wide">
+                  Best For
+                </p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {grade.applications.map((app, ai) => (
+                    <span
+                      key={ai}
+                      className="rounded-full bg-white border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700"
+                    >
+                      {app}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
       )}
 
       {/* Comparison table (flat-models lines only) */}
       {comparisonRows && (
-        <section className="py-16 lg:py-20 px-6 lg:px-24 bg-slate-50">
+        <section className="py-16 lg:py-20 px-6 lg:px-20 bg-slate-50">
           <h2 className="text-2xl font-extrabold text-[#0f172a] mb-8 text-center">
             Model Selection Guide
           </h2>
